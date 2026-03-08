@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="heading">Enter Your Message</h3>
+        <p class="max">Maximum Characters 200</p>
+        <textarea name="" id="textArea" maxlength="200" placeholder="Drop your Message here..."></textarea>
+            <div class="card" >
+                <p id="count">0/200 Characters</p>
+                <p id="remaining">200 Remaining</p>
+            </div>
+            <div id="warning"></div>
+        </div>
+    </div>
+
+    <!-- script -->
+
+    <script>
+        // selecting textarea, count, warning
+        var textArea = document.getElementById("textArea");
+        var count = document.getElementById("count");
+        var remaining = document.getElementById("remaining")
+        var warning = document.getElementById("warning");
+
+        var maxLength = 200;
+        textArea.addEventListener("input", function () {
+
+            var textCount = textArea.value.length;
+            var remainingCount = maxLength - textCount;
+            count.textContent = textCount + "/" + maxLength;
+            remaining.textContent = remainingCount + " Remaining";
+            if (textCount == maxLength) {
+                warning.textContent = "Chracters limit reached";
+            }
+            else {
+                warning.textContent = "";
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>
